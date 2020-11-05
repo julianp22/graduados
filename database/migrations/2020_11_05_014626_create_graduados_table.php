@@ -15,6 +15,7 @@ class CreateGraduadosTable extends Migration
     {
         Schema::create('graduados', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre')
             $table->timestamps();
         });
     }

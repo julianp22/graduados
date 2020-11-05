@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'home')->name('home');
+
+//resource routes
+Route::resource('noticia', 'NoticiaController')->names('noticias');
+Route::resource('graduado', 'GraduadoController')->names('graduados');
+Route::resource('evento', 'EventoController')->names('eventos');
+Route::resource('experiencia', 'ExperienciaController')->names('experiencias');
+Route::resource('oferta', 'OfertaController')->names('ofertas');
+
+Route::view('/contacto', 'contact')->name('contact');
+//Route::post('contact', 'MessageController@store')->name('messages.store');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-red shadow-sm">
+<nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-danger shadow-sm">
 	<!--<div class="container">-->
 		<a href="{{ route('home') }}"><img id="logoBrand" src="/img/logo.png" alt="Logo" class="img-responsive"></a>
 		<a class="navbar-brand" href="{{ route('home') }}">
@@ -16,21 +16,11 @@
 						<i class="fas fa-home home"></i> @lang('Home')
 					</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link {{ setActive('about') }}" href="{{ route('about') }}">
-						<i class="fas fa-home home"></i> @lang('About')
-					</a>
-				</li> -->
 				<li class="nav-item">
 					<a class="nav-link {{ setActive('graduados.*') }}" href="{{ route('graduados.index') }}">
 						<i class="fas fa-store store"></i> @lang('Products')
 					</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link {{ setActive('contact') }}" href="{{ route('contact') }}">
-						<i class="fas fa-headset contact"></i> @lang('Contact')
-					</a>
-				</li> 
 				@guest
 				<li class="nav-item">
 					<a class="nav-link {{ setActive('login') }}" href="{{ route('login') }}">
@@ -50,7 +40,6 @@
 		            </a>
 		        </li>
 				@endguest
-				-->
 			</ul>
 			<ul class="navbar-nav nav-flex-icons">
 				<li role="presentation" class="dropdown">

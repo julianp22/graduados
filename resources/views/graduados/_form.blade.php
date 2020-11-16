@@ -6,7 +6,10 @@
     type="text" 
     placeholder="Nombre"
     name="nombre" 
-    value="{{ old('nombre', $producto->nombre) }}">
+    value="{{ old('nombre', $graduado->nombre) }}"
+    onkeydown="return /[a-z, ]/i.test(event.key)"
+    onblur="if (this.value == '') {this.value = '';}"
+    onfocus="if (this.value == '') {this.value = '';}">
     @error('nombre')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -15,61 +18,14 @@
 </div>
 
 <div class="form-group">
-    <label for="marca">Marca</label>
-    <input class="form-control border-0 bg-light shadow-sm @error('marca') is-invalid @enderror" 
-    id="marca" 
-    type="text" 
-    placeholder="Marca"
-    name="marca" 
-    value="{{ old('marca', $producto->marca) }}">
-    @error('marca')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label class="my-1 mr-2" for="prenda">Prenda</label>
-    <select class="form-control border-0 bg-light shadow-sm @error('prenda') is-invalid @enderror" 
-    id="prenda"
-    name="prenda">
-        <option value="" selected>Seleccione prenda</option>
-        <option value="Camiseta" {{ old('prenda') == 'Camiseta' ? 'selected' : '' }}>Camiseta</option>
-        <option value="Pantalon" {{ old('prenda') == 'Pantalon' ? 'selected' : '' }}>Pantalon</option>
-        <option value="Zapatos" {{ old('prenda') == 'Zapatos' ? 'selected' : '' }}>Zapatos</option>
-    </select>
-    @error('prenda')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label for="talla">Talla</label>
-    <input class="form-control border-0 bg-light shadow-sm @error('talla') is-invalid @enderror" 
-    id="talla" 
-    type="text" 
-    placeholder="Talla"
-    name="talla" 
-    value="{{ old('talla', $producto->talla) }}">
-    @error('talla')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
-
-<div class="form-group">
-    <label for="costo">Costo</label>
-    <input class="form-control border-0 bg-light shadow-sm @error('costo') is-invalid @enderror" 
-    id="costo" 
+    <label for="cedula">Cedula</label>
+    <input class="form-control border-0 bg-light shadow-sm @error('cedula') is-invalid @enderror" 
+    id="cedula" 
     type="number" 
-    placeholder="Costo"
-    name="costo" 
-    value="{{ old('costo', $producto->costo) }}">
-    @error('costo')
+    placeholder="Cedula"
+    name="cedula" 
+    value="{{ old('cedula', $graduado->cedula) }}">
+    @error('cedula')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -77,12 +33,14 @@
 </div>
 
 <div class="form-group">
-    <label for="descripcion">Descripcion</label>
-    <textarea class="form-control border-0 bg-light shadow-sm @error('descripcion') is-invalid @enderror"  
-    name="descripcion" 
-    placeholder="Descripcion"
-    rows="3">{{ old('descripcion', $producto->descripcion) }}</textarea>
-    @error('descripcion')
+    <label for="email">Email</label>
+    <input class="form-control border-0 bg-light shadow-sm @error('email') is-invalid @enderror" 
+    id="email" 
+    type="email" 
+    placeholder="Email"
+    name="email" 
+    value="{{ old('email', $graduado->email) }}">
+    @error('email')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -90,16 +48,42 @@
 </div>
 
 <div class="form-group">
-    <label for="foto">Foto: </label>
-    <input type="file" id="foto" accept="image/*" name="foto" value="{{ old('foto', $producto->foto) }}" class="@error('foto') is-invalid @enderror">
-    @error('foto')
+    <label for="fecha_grado">Fecha de grado</label>
+    <input class="form-control border-0 bg-light shadow-sm @error('fecha_grado') is-invalid @enderror" 
+    id="fecha_grado" 
+    type="date" 
+    placeholder="Fecha de grado"
+    name="fecha_grado" 
+    value="{{ old('fecha_grado', $graduado->fecha_grado) }}">
+    @error('fecha_grado')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
     @enderror
 </div>
+
+<div class="form-group">
+    <label for="num_celular">Numero de célular</label>
+    <input class="form-control border-0 bg-light shadow-sm @error('num_celular') is-invalid @enderror" 
+    id="num_celular" 
+    type="number" 
+    placeholder="Numero de célular"
+    name="num_celular" 
+    value="{{ old('num_celular', $graduado->num_celular) }}">
+    @error('num_celular')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
+<select class="selectpicker countrypicker" data-flag="true" ></select>
+ 
+  <script>
+    $('.countrypicker').countrypicker();
+  </script> 
 
 <button class="btn btn-primary btn-lg btn-block">{{ $btnText }}</button>
-<a class="btn btn-link btn-block" href=" {{ route('productos.index') }} ">
+<a class="btn btn-link btn-block" href=" {{ route('graduados.index') }} ">
     Cancelar
 </a>

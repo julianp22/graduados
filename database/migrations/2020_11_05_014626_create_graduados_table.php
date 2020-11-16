@@ -15,7 +15,13 @@ class CreateGraduadosTable extends Migration
     {
         Schema::create('graduados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')
+            $table->string('nombre');
+            $table->string('cedula')->unique();
+            $table->date('fecha_grado');
+            $table->string('email')->unique();
+            $table->integer('num_celular');
+            $table->string('pais_residencia');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

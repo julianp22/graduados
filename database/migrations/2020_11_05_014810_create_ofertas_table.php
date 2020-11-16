@@ -15,6 +15,11 @@ class CreateOfertasTable extends Migration
     {
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
+            $table->string('cargo');
+            $table->string('empresa');
+            $table->text('descripcion');
+            $table->decimal('salario', 8, 0);
+            $table->string('url');
             $table->timestamps();
         });
     }

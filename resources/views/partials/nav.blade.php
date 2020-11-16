@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-danger shadow-sm">
+<nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-secondary shadow-sm">
 	<!--<div class="container">-->
 		<a href="{{ route('home') }}"><img id="logoBrand" src="/img/logo.png" alt="Logo" class="img-responsive"></a>
 		<a class="navbar-brand" href="{{ route('home') }}">
@@ -18,7 +18,7 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link {{ setActive('graduados.*') }}" href="{{ route('graduados.index') }}">
-						<i class="fas fa-store store"></i> @lang('Products')
+						<i class="fas fa-user-graduate"></i> Graduados
 					</a>
 				</li>
 				@guest

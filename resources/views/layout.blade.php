@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}">
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}"  type='image/x-icon'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
 </head>

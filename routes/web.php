@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');
 
 //resource routes
-Route::resource('noticia', 'NoticiaController')->names('noticias');
-Route::resource('graduado', 'GraduadoController')->names('graduados');
-Route::resource('evento', 'EventoController')->names('eventos');
-Route::resource('experiencia', 'ExperienciaController')->names('experiencias');
-Route::resource('oferta', 'OfertaController')->names('ofertas');
+Route::resource('noticia', 'App\Http\Controllers\NoticiaController')->names('noticias');
+Route::resource('graduado', 'App\Http\Controllers\GraduadoController')->names('graduados');
+Route::resource('evento', 'App\Http\Controllers\EventoController')->names('eventos');
+Route::resource('experiencia', 'App\Http\Controllers\ExperienciaController')->names('experiencias');
+Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofertas');
 
 Route::view('/contacto', 'contact')->name('contact');
 //Route::post('contact', 'MessageController@store')->name('messages.store');

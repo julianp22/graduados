@@ -2,83 +2,82 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Graduado;
+use App\Http\Requests\SaveGraduadoRequest;
 use Illuminate\Http\Request;
 
 class GraduadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
-        //
+        return view('graduados.index', [
+            'graduados' => Graduado::latest()->paginate()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show(Graduado $graduado) 
+    {
+        return view('graduados.show', [
+            'graduado' => $graduado
+        ]);
+    }
+
     public function create()
     {
-        //
+        return view('graduados.create', [
+            'graduado' => new Graduado
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(SaveGraduadoRequest $request)
     {
-        //
+        $file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
+        Graduado::create([
+            'user_id' => auth()->id(),
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ] + $request->validated()); // se pone la id del usuario logeado en user_id
+        return redirect()->route('graduados.index')->with('status', 'El graduado fue agregado con exito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Graduado $graduado)
     {
-        //
+        return view('graduados.edit', [
+            'graduado' => $graduado
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Graduado $graduado, SaveGraduadoRequest $request)
     {
-        //
+        
+
+        /*if ($request->hasFile('foto')) {
+
+            $imagePath = public_path('storage/'.$request->foto);
+            if(Storage::disk('public')->exists($imagePath)){
+                Storage::delete($graduado->foto);
+            }
+            $file = $request->file('foto');
+            $originalname = $file->getClientOriginalName();
+            $image = $file->storeAs('fotos', $originalname, 'public');
+            //$data['foto'] = $image;
+            //$post->update($data);
+        }*/
+
+        $graduado->update($request->validated());
+
+        return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Graduado $graduado)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Storage::delete($graduado->foto);
+        $graduado->delete();
+        return redirect()->route('graduados.index')->with('status', 'El graduado fue eliminado con exito');
     }
 }

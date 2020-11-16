@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Agregar producto')
+@section('title', 'Registrar graduado')
     
 @section('content')
 
@@ -11,13 +11,13 @@
 
                 <form class="bg-white py-3 px-4 shadow rounded" 
                     method="POST" 
-                    action="{{ route('productos.store') }}"
+                    action="{{ route('graduados.store') }}"
                     enctype="multipart/form-data">
 
-                    <h3 class="text-center">Agregar producto</h1>
+                    <h3 class="text-center">Registrar graduado</h1>
                     <hr>
 
-                    @include('productos._form', ['btnText' => 'Agregar'])
+                    @include('graduados._form', ['btnText' => 'Registrar'])
                 </form>
             </div>
         </div>

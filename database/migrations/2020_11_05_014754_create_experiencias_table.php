@@ -15,6 +15,9 @@ class CreateExperienciasTable extends Migration
     {
         Schema::create('experiencias', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('graduado_id')->constrained('graduados');
+            $table->string('url_video');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

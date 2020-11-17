@@ -9,7 +9,7 @@ $line-height-base: 1.6;
 
 // Colors
 
-$primary: #c0c0c0;
+$primary: #aa1916;
 $secondary: #aa1916;
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -21,6 +21,20 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+//Hide number input arrows
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+//end number input
 
 //for fixed navbar overlap
 body {
@@ -109,6 +123,64 @@ header, main, footer {
   flex-shrink: 0;
 }
 //END FOOTER
+
+//input as a link
+span {
+  cursor: pointer;
+}
+a {
+  position: relative;
+  overflow: hidden;
+}
+span:hover a {
+  color: red;
+}
+a + input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+//end input
+
+//subir Pic view
+
+#upload {
+  opacity: 0;
+}
+
+#upload-label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+
+.image-area {
+  border: 2px dashed rgba(129, 40, 40, 0.7);
+  padding: 1rem;
+  position: relative;
+}
+
+.image-area::before {
+  content: 'Foto actualizada';
+  color: #aa1916;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+.image-area img {
+  z-index: 2;
+  position: relative;
+}
+
+//end pic view
 
 //EMPIEZA LOGIN FORM
 

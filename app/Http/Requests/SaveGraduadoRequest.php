@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SaveGraduadoRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class SaveGraduadoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,26 @@ class SaveGraduadoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required',
+            'cedula' => 'required',
+            'fecha_grado' => 'required',
+            'email' => 'required',
+            'num_celular' => 'required',
+            'pais_residencia' => 'required',
+            'foto' => 'required|mimes:jpeg,png,bmp,tiff|max:4096'
+        ];
+    }
+
+    public function messages() 
+    {
+        return [
+            'nombre.required' => 'Se requiere de un nombre',
+            'cedula.required' => 'Se requiere de una cédula',
+            'fecha_grado.required' => 'Se requiere de una fecha de grado',
+            'email.required' => 'Se requiere un email',
+            'num_celular.required' => 'Se requiere de un número de celular',
+            'pais_residencia.required' => 'Se debe elegir un país de residencia',
+            'foto.required' => 'Se requiere una foto'
         ];
     }
 }

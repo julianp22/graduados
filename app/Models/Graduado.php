@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Graduado extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'nombre', 'cedula', 'fecha_grado', 'email', 'num_celular', 'pais_residencia', 'foto'
+    ];
 }

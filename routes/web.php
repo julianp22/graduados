@@ -22,7 +22,11 @@ Route::resource('evento', 'App\Http\Controllers\EventoController')->names('event
 Route::resource('experiencia', 'App\Http\Controllers\ExperienciaController')->names('experiencias');
 Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofertas');
 
-Route::view('/contacto', 'contact')->name('contact');
+//graduados routes
+Route::get('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@picView')->name('picView');
+Route::post('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@updatePic')->name('updatePic');
+
+
 //Route::post('contact', 'MessageController@store')->name('messages.store');
 
 Auth::routes();

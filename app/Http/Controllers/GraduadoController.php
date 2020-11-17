@@ -39,9 +39,8 @@ class GraduadoController extends Controller
         $file = $request->file('foto');
         $originalname = $file->getClientOriginalName();
         Graduado::create([
-            'user_id' => auth()->id(),
             'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
-        ] + $request->validated()); // se pone la id del usuario logeado en user_id
+        ] + $request->validated());
         return redirect()->route('graduados.index')->with('status', 'El graduado fue agregado con exito');
     }
 
@@ -52,27 +51,54 @@ class GraduadoController extends Controller
         ]);
     }
 
+    public function picView(Graduado $graduado)
+    {
+        return view('graduados.picView', [
+            'graduado' => $graduado
+        ]);
+    }
+
     public function update(Graduado $graduado, SaveGraduadoRequest $request)
     {
-        
+        /*$file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
 
-        /*if ($request->hasFile('foto')) {
+        $graduado->update([
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ] + $request->validated());*/
+
+        $producto->update($request->validated());
+
+        return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
+    }
+
+    public function updatePic($id)
+    {
+        $file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
+
+        Graduado::where('id', $id)->update([
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ] + $request->validated());
+
+        return redirect()->back()->with('status', 'La foto fue actualizada con éxito');
+    }
+
+    /*public function updatePic(Graduado $graduado)
+    {
+        if ($request->hasFile('foto')) {
 
             $imagePath = public_path('storage/'.$request->foto);
             if(Storage::disk('public')->exists($imagePath)){
-                Storage::delete($graduado->foto);
+                Storage::delete($producto->foto);
             }
             $file = $request->file('foto');
             $originalname = $file->getClientOriginalName();
             $image = $file->storeAs('fotos', $originalname, 'public');
             //$data['foto'] = $image;
             //$post->update($data);
-        }*/
-
-        $graduado->update($request->validated());
-
-        return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
-    }
+        }
+    }*/
 
     public function destroy(Graduado $graduado)
     {

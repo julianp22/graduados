@@ -21,33 +21,34 @@
 						<i class="fas fa-user-graduate"></i> Graduados
 					</a>
 				</li>
-				@guest
 				<li class="nav-item">
-					<a class="nav-link {{ setActive('login') }}" href="{{ route('login') }}">
-						<i class="fas fa-sign-in-alt"></i> @lang('Login')
+					<a class="nav-link {{ setActive('noticias.*') }}" href="{{ route('noticias.index') }}">
+						<i class="fas fa-newspaper"></i> Noticias
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link {{ setActive('register') }}" href="{{ route('register') }}">
-						<i class="fas fa-user-plus"></i> @lang('Register')
+					<a class="nav-link {{ setActive('eventos.*') }}" href="{{ route('eventos.index') }}">
+						<i class="fas fa-calendar-week"></i> Eventos
 					</a>
 				</li>
-				@else
 				<li class="nav-item">
-					<a class="nav-link" href="#" onclick="event.preventDefault();
-		                document.getElementById('logout-form').submit();">
-		                <i class="fas fa-sign-out-alt"></i> @lang('Logout')
-		            </a>
-		        </li>
-				@endguest
+					<a class="nav-link {{ setActive('experiencias.*') }}" href="{{ route('experiencias.index') }}">
+						<i class="fas fa-calendar-week"></i> Experiencias
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ setActive('ofertas.*') }}" href="{{ route('ofertas.index') }}">
+						<i class="fas fa-calendar-week"></i> Ofertas
+					</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav nav-flex-icons">
-				<li role="presentation" class="dropdown">
+				@guest
+				<li id="social" role="presentation" class="dropdown">
 					<a id="dropdown" class="dropdown-toggle text-decoration-none mr-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-user"></i><span class="caret"></span>
 					</a>
 					<div class="dropdown-menu">
-						@guest
 						<a class="dropdown-item {{ setActive('login') }}" href="{{ route('login') }}">
 							<i class="fas fa-sign-in-alt"></i> @lang('Login')
 						</a>
@@ -55,14 +56,16 @@
 						<a class="dropdown-item {{ setActive('register') }}" href="{{ route('register') }}">
 							<i class="fas fa-user-plus"></i> @lang('Register')
 						</a>
-						@else
-						<a class="dropdown-item" href="#" onclick="event.preventDefault();
-							document.getElementById('logout-form').submit();">
-							<i class="fas fa-sign-out-alt"></i> @lang('Logout')
-						</a>
-						@endguest
 					</div>
 				</li>
+				@else
+				<li id="social">
+					<a href="#" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						<i class="fas fa-power-off white-text mr-4"></i>
+					</a>
+				</li>
+				@endguest
 				<li id="social" class="text-center">
 					<a href="https://facebook.com" target="_blank" class="fb-ic">
 						<i class="fab fa-facebook-f white-text mr-4"> </i>

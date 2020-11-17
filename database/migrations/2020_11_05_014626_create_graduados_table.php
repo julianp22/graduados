@@ -19,9 +19,9 @@ class CreateGraduadosTable extends Migration
             $table->string('cedula')->unique();
             $table->date('fecha_grado');
             $table->string('email')->unique();
-            $table->integer('num_celular');
+            $table->bigInteger('num_celular');
             $table->string('pais_residencia');
-            $table->string('foto')->nullable();
+            $table->string('foto');
             $table->timestamps();
         });
     }

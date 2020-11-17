@@ -1,37 +1,49 @@
 @extends('layout')
 
-@section('title', $producto->nombre)
+@section('title', $graduado->nombre)
 
 @section('content')
-    <div class="container">
-        <div class="bg-white p-5 shadow rounded">
-            <h1>{{ $producto->nombre }}</h1>
-            <p class="text-secondary">{{ $producto->descripcion }}</p>
-            <p class="text-black-50">{{ $producto->created_at->diffForHumans() }}</p>
-            
-            <div class="d-flex justify-content-between align-items-center">
-                <a href=" {{ route('productos.index') }} ">
-                    Regresar
-                </a>
-            </div>
+<div class="container p-4">
+    <div class="bg-white p-5 shadow rounded">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>{{ $graduado->nombre }}</h1>
+                <p class="text-secondary">{{ $graduado->descripcion }}</p>
+                <p class="text-black-50">Agregado {{ $graduado->created_at->diffForHumans() }}</p>
 
-            @auth
-            <div class="btn-group btn-group-sm">
-                <a class="btn btn-primary" href="{{ route('productos.edit', $producto) }}">
-                    Editar
-                </a>
-                <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-producto').submit()">
-                    Eliminar
-                </a>
-            </div>
-                <form id="delete-producto" method="POST" 
-                    class="d-none"
-                    action="{{ route('productos.destroy', $producto) }}">
+                @auth
+                <div class="btn-toolbar mb-2">
+                    <a class="btn btn-secondary mr-2" href="{{ route('graduados.edit', $graduado) }}">
+                        Editar
+                    </a>
+                    <a class="btn btn-danger mr-2" href="#" onclick="document.getElementById('delete-graduado').submit()">
+                        Eliminar
+                    </a>
+                    <span>
+                        <a class="btn btn-success mr-2" href='{{ route('picView', $graduado) }}'>Cambiar foto</a>
+                        <input type="file" id="foto" accept="image/*" name="foto" value="{{ old('foto', $graduado->foto) }}"
+                            class="@error('foto') is-invalid @enderror" />
+                    </span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-dark" href=" {{ route('graduados.index') }} ">
+                        Regresar
+                    </a>
+                </div>
+                <form id="delete-graduado" method="POST" class="d-none"
+                    action="{{ route('graduados.destroy', $graduado) }}">
                     @csrf @method('DELETE')
                     <button>Eliminar</button>
                 </form>
-            @endauth
+                @endauth
+            </div>
+            <div class="col-lg-6">
+                <img src="{{asset('storage/' . $graduado->foto)}}" class="rounded float-right img-thumbnail"
+                    alt="Responsive image" height="400px" width="400px">
+            </div>
         </div>
     </div>
+</div>
+
 @endsection
-    

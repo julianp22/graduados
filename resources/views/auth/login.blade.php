@@ -119,12 +119,6 @@
                             {{ __('Forgot Your Password?') }}
                         </a>
                         @endif
-
-                        <hr class="my-4">
-                        <button id="glBtn" class="btn btn-lg btn-block text-uppercase" type="submit"><i
-                                class="fab fa-google mr-2"></i> Sign in with Google</button>
-                        <button id="fbBtn" class="btn btn-lg btn-block text-uppercase" type="submit"><i
-                                class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
                     </form>
                 </div>
             </div>

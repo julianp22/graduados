@@ -121,9 +121,6 @@
 
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrarse</button>
 
-                        <hr class="my-4">
-                        <button id="glBtn" class="btn btn-lg btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Registrarse con Google</button>
-                        <button id="fbBtn" class="btn btn-lg btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Registrarse con Facebook</button>
                     </form>
                 </div>
             </div>

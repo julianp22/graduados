@@ -8,7 +8,7 @@
     <div class="text-center">
         <h3 class="display-6">Foto actual</h2>
             <img src="{{asset('storage/' . $graduado->foto)}}" class="rounded img-thumbnail" alt="Responsive image"
-                height="200px" width="200px">
+                style="height: 200px; width: 200px;">
     </div>
 
     <div class="row py-4">
@@ -48,7 +48,7 @@
     </form>
 </div>
 
-<script>
+<script type="application/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

@@ -311,16 +311,6 @@
     @enderror
 </div>
 
-<div class="form-group">
-    <label for="foto">Foto: </label>
-    <input type="file" id="foto" accept="image/*" name="foto" value="{{ old('foto', $graduado->foto) }}"
-        class="@error('foto') is-invalid @enderror">
-    @error('foto')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
 
 <button class="btn btn-primary btn-lg btn-block">{{ $btnText }}</button>
 <a class="btn btn-link btn-block" href=" {{ route('graduados.index') }} ">

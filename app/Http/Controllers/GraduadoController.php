@@ -58,7 +58,7 @@ class GraduadoController extends Controller
         ]);
     }
 
-    public function update(Graduado $graduado, SaveGraduadoRequest $request)
+    public function update(Graduado $graduado, Request $request)
     {
         /*$file = $request->file('foto');
         $originalname = $file->getClientOriginalName();
@@ -67,13 +67,35 @@ class GraduadoController extends Controller
             'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
         ] + $request->validated());*/
 
-        $producto->update($request->validated());
+        //$graduado->update($request->validated());
+
+        $this->validate($request,[ 
+            'nombre' => 'required', 
+            'cedula' => 'required', 
+            'fecha_grado' => 'required', 
+            'email' => 'required', 
+            'num_celular' => 'required', 
+            'pais_residencia' => 'required'
+        ]);
+
+        $data = Graduado::find($graduado->id);
+        $data->nombre = $request->nombre;
+        $data->cedula = $request->cedula;
+        $data->fecha_grado = $request->fecha_grado;
+        $data->email = $request->email;
+        $data->num_celular = $request->num_celular;
+        $data->pais_residencia = $request->pais_residencia;
+        $data->save();
 
         return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
     }
 
-    public function updatePic($id)
+    public function updatePic($id, Request $request)
     {
+        $this->validate($request, [ 
+            'pais_residencia' => 'required|mimes:jpeg,png,bmp,tiff|max:4096'
+        ]);
+
         $file = $request->file('foto');
         $originalname = $file->getClientOriginalName();
 

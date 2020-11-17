@@ -40,7 +40,7 @@
             </div>
             <div class="col-lg-6">
                 <img src="{{asset('storage/' . $graduado->foto)}}" class="rounded float-right img-thumbnail"
-                    alt="Responsive image" height="400px" width="400px">
+                    alt="Responsive image" style="height: 400px; width= 400px;">
             </div>
         </div>
     </div>

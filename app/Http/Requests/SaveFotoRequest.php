@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class SaveNoticiaRequest extends FormRequest
+class SaveFotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +25,14 @@ class SaveNoticiaRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'foto' => 'required'
+            'foto' => 'required|mimes:jpeg,png,bmp,tiff|max:4096'
         ];
     }
 
     public function messages() 
     {
         return [
-            'titulo.required' => 'Se requiere de un titulo',
-            'descripcion.required' => 'Se requiere de una descripción',
-            'foto.required' => 'Se requiere un foto'
+            'foto.required' => 'Se requiere una foto'
         ];
     }
 }

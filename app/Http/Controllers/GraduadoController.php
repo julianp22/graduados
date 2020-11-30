@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Graduado;
 use App\Http\Requests\SaveGraduadoRequest;
+use App\Http\Requests\SaveFotoRequest;
 use Illuminate\Http\Request;
 
 class GraduadoController extends Controller
@@ -72,17 +73,16 @@ class GraduadoController extends Controller
         return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
     }
 
-    public function updatePic($id, SaveGraduadoRequest $request)
+    public function updatePic(Graduado $graduado, SaveFotoRequest $request)
     {
         $file = $request->file('foto');
         $originalname = $file->getClientOriginalName();
-        error_log('message here.');
 
-        Graduado::where('id', $id)->update([
+        $graduado->update([
             'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
-        ] + $request->validated());
+        ]);
 
-        return redirect()->back()->with('status', 'La foto fue actualizada con éxito');
+        return redirect()->route('graduados.show', $graduado)->with('status', 'La foto fue actualizada con éxito');
     }
 
     /*public function updatePic(Graduado $graduado)

@@ -13,7 +13,7 @@ class SaveExperienciaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +24,16 @@ class SaveExperienciaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'url_video' => 'required',
+            'descripcion' => 'required',
+        ];
+    }
+
+    public function messages() 
+    {
+        return [
+            'url_video.required' => 'Se requiere de un vídeo',
+            'descripcion.required' => 'Se requiere de una descripción'
         ];
     }
 }

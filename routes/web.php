@@ -26,7 +26,4 @@ Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofert
 Route::get('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@picView')->name('picView');
 Route::post('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@updatePic')->name('updatePic');
 
-
-//Route::post('contact', 'MessageController@store')->name('messages.store');
-
 Auth::routes();

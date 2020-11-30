@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experiencia extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'graduado_id', 'url_video', 'descripcion'
+    ];
 }

@@ -13,7 +13,7 @@ class SaveEventoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +24,20 @@ class SaveEventoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
+        ];
+    }
+
+    public function messages() 
+    {
+        return [
+            'titulo.required' => 'Se requiere de un título',
+            'descripcion.required' => 'Se requiere de una descripcion',
+            'fecha_inicio.required' => 'Se requiere una fecha de inicio',
+            'fecha_fin.required' => 'Se requiere de una fecha fin'
         ];
     }
 }

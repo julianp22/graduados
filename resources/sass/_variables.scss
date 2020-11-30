@@ -61,7 +61,7 @@ body {
 }
 
 .nav a {
-  margin-left: 10px;
+  margin-left: 0px;
   text-transform: uppercase;
   font-size: 14px;
   border-radius: 8px;
@@ -143,44 +143,6 @@ a + input {
 }
 //end input
 
-//subir Pic view
-
-#upload {
-  opacity: 0;
-}
-
-#upload-label {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-}
-
-.image-area {
-  border: 2px dashed rgba(129, 40, 40, 0.7);
-  padding: 1rem;
-  position: relative;
-}
-
-.image-area::before {
-  content: 'Foto actualizada';
-  color: #aa1916;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
-  z-index: 1;
-}
-
-.image-area img {
-  z-index: 2;
-  position: relative;
-}
-
-//end pic view
 
 //EMPIEZA LOGIN FORM
 

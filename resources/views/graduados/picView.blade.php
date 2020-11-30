@@ -4,81 +4,39 @@
 
 @section('content')
 
-<div class="container py-4">
-    <div class="text-center">
-        <h3 class="display-6">Foto actual</h2>
-            <img src="{{asset('storage/' . $graduado->foto)}}" class="rounded img-thumbnail" alt="Responsive image"
-                style="height: 200px; width: 200px;">
-    </div>
+    <div class="container py-4">
+        <div class="text-center">
+            <h3 class="display-6">Foto actual</h2>
+                <img src="{{ asset('storage/' . $graduado->foto) }}" class="rounded img-thumbnail" alt="Responsive image"
+                    style="height: 200px; width: 200px;">
+        </div>
 
-    <form method="POST" action="{{ route('updatePic', $graduado->id) }}" enctype="multipart/form-data" autocomplete="off">
-        @csrf
         <div class="row py-4">
-            <div class="col-lg-6 mx-auto">
-                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                    <div class="form-group">
-                        <input id="upload" type="file" onchange="readURL(this);"
-                            class="form-control border-0 @error('foto') is-invalid @enderror" accept="image/*">
-                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Elige una
-                            foto</label>
-                    </div>
-                        <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
-                                    class="fa fa-cloud-upload mr-2 text-muted"></i><small
-                                    class="text-uppercase font-weight-bold text-muted">Buscar</small></label>
-                        </div>
-                        @error('foto')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                </div>
+            <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+                <form class="bg-white py-3 px-4 shadow rounded" method="POST" action="{{ route('updatePic', $graduado) }}"
+                    enctype="multipart/form-data" autocomplete="off">
 
-                <p class="font-italic text-center">Debajo aparecerá la nueva foto</p>
-                <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                        class="img-fluid rounded shadow-sm mx-auto d-block" height="200px" width="200px"></div>
+                    <h3 class="text-center">Cambiar foto</h3>
+                    <hr>
+
+                    @csrf
+                    <div class="form-group">
+                        <label for="foto">Foto: </label>
+                        <input type="file" id="foto" accept="image/*" name="foto" value="{{ old('foto', $graduado->foto) }}"
+                            class="@error('foto') is-invalid @enderror">
+                        @error('foto')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block">Actualizar foto</button>
+                    <a class="btn btn-link btn-block" href=" {{ route('graduados.index') }} ">
+                        Cancelar
+                    </a>
+                </form>
             </div>
         </div>
-        <div class="row py-4">
-            <button class="btn btn-primary btn-lg btn-block">Actualizar foto</button>
-            <a class="btn btn-link btn-block" href=" {{ route('graduados.show', $graduado) }} ">
-                Cancelar
-            </a>
-        </div>
-    </form>
-</div>
-
-<script type="application/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imageResult')
-                    .attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $(function () {
-        $('#upload').on('change', function () {
-            readURL(input);
-        });
-    });
-
-    /*  ==========================================
-        SHOW UPLOADED IMAGE NAME
-    * ========================================== */
-    var input = document.getElementById( 'upload' );
-    var infoArea = document.getElementById( 'upload-label' );
-
-    input.addEventListener( 'change', showFileName );
-    function showFileName( event ) {
-    var input = event.srcElement;
-    var fileName = input.files[0].name;
-    infoArea.textContent = 'File name: ' + fileName;
-    }
-</script>
+    </div>
 
 @endsection

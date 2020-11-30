@@ -74,9 +74,15 @@ class GraduadoController extends Controller
 
     public function updatePic($id, SaveGraduadoRequest $request)
     {
-        $graduado->update($request->validated());
+        $file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
+        error_log('message here.');
 
-        return redirect()->route('graduados.show', $graduado)->with('status', 'El graduado fue actualizado con exito');
+        Graduado::where('id', $id)->update([
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ] + $request->validated());
+
+        return redirect()->back()->with('status', 'La foto fue actualizada con éxito');
     }
 
     /*public function updatePic(Graduado $graduado)

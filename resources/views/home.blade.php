@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Home')
+@section('title', 'Inicio')
 
 @section('content')
 <!--<div class="container">
@@ -54,31 +54,29 @@
         <div class="col-lg-6 col-md-6 col-sm-12 overlay-gradient bg-cover bg-center p-5"
             style="background: url(https://i.postimg.cc/Xqdb0gzM/forest-1.jpg)">
             <div class="overlay-content text-white text-center p-5">
-                <h2>Gradient overlay</h2>
-                <p class="lead demo-text mb-1">Wrap your content inside a relative parent <code>.overlay-gradient</code>
+                <h2>Evento 1</h2>
+                <p class="lead demo-text mb-1">Ejemplo de evento 1
                 </p>
-                <p class="lead demo-text mb-1">Using pseudo elements apply a full dimensioned cover with a transparent
-                    gradient.</p>
-                <p class="lead demo-text mb-4">Put all your content inside a child div that has higher
-                    <code>z-index</code> than the overlay. i.e. <code>.overlay-content</code></p>
-                <a class="btn btn-outline-light rounded-0 px-5" href="#">Get started</a>
+                <p class="lead demo-text mb-1">Demostración de un evento</p>
+                <p class="lead demo-text mb-4">Poner la descripción del evento</p>
+                <a class="btn btn-outline-light rounded-0 px-5" href="#">Ver evento</a>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 overlay-gradient bg-cover bg-center p-5"
             style="background: url(https://i.postimg.cc/Xqdb0gzM/forest-1.jpg)">
             <div class="overlay-content text-white text-center p-5">
-                <h2>Gradient overlay</h2>
-                <p class="lead demo-text mb-1">Wrap your content inside a relative parent <code>.overlay-gradient</code>
+                <h2>Evento 2</h2>
+                <p class="lead demo-text mb-1">Ejemplo de evento 2
                 </p>
-                <p class="lead demo-text mb-1">Using pseudo elements apply a full dimensioned cover with a transparent
-                    gradient.</p>
-                <p class="lead demo-text mb-4">Put all your content inside a child div that has higher
-                    <code>z-index</code> than the overlay. i.e. <code>.overlay-content</code></p>
-                <a class="btn btn-outline-light rounded-0 px-5" href="#">Get started</a>
+                <p class="lead demo-text mb-1">Demostración de un evento</p>
+                <p class="lead demo-text mb-4">Poner la descripción del evento</p>
+                <a class="btn btn-outline-light rounded-0 px-5" href="#">Ver evento</a>
             </div>
         </div>
     </div>
 </div>
+
+<!--
 <section class="py-5 text-center">
     <div class="container">
         <h2 class="text-center">Luckmoshy`s Services</h2>
@@ -219,15 +217,14 @@
         </div>
     </div>
 </div>
-<hr>
+<hr>-->
 
 <!-- FOOTER -->
 
 <div class="container py-5">
     <div class="row py-4">
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                do eiusmod tempor incididunt.</p>
+            <p class="font-italic text-muted">Redes sociales de la carrera</p>
             <ul class="list-inline mt-4">
                 <li class="list-inline-item"><a href="https://facebook.com" target="_blank" title="twitter"><i
                             class="fab fa-facebook-f white-text mr-4"> </i></a></li>
@@ -240,30 +237,28 @@
             </ul>
         </div>
         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
+            <h6 class="text-uppercase font-weight-bold mb-4">Información</h6>
             <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a href="#" class="text-muted">For Women</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">For Men</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">Stores</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">Our Blog</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Graduados</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Noticias</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Eventos</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Ofertas Laborales</a></li>
             </ul>
         </div>
         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
+            <h6 class="text-uppercase font-weight-bold mb-4">Ingeniería de Sistemas</h6>
             <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a href="#" class="text-muted">Login</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">Register</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li>
-                <li class="mb-2"><a href="#" class="text-muted">Our Products</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Docentes</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Estudiantes</a></li>
+                <li class="mb-2"><a href="#" class="text-muted">Página oficial</a></li>
             </ul>
         </div>
         <div class="col-lg-4 col-md-6 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-            <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque
-                temporibus.</p>
+            <h6 class="text-uppercase font-weight-bold mb-4">Contacto</h6>
+            <p class="text-muted mb-4">Envíe un correo para contactarse</p>
             <div class="p-1 rounded border">
                 <div class="input-group">
-                    <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+                    <input type="email" placeholder="Ingrese su correo electrónico" aria-describedby="button-addon1"
                         class="form-control border-0 shadow-0">
                     <div class="input-group-append">
                         <button id="button-addon1" type="submit" class="btn btn-link"><i

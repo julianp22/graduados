@@ -13,7 +13,7 @@
 			<ul class="nav navbar-nav nav-pills mr-auto">
 				<li class="nav-item">
 					<a class="nav-link {{ setActive('home') }}" href="{{ route('home') }}">
-						<i class="fas fa-home home"></i> @lang('Home')
+						<i class="fas fa-home home"></i> Inicio
 					</a>
 				</li>
 				<li class="nav-item">

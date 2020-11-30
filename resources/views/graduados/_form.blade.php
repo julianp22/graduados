@@ -313,6 +313,6 @@
 
 
 <button class="btn btn-primary btn-lg btn-block">{{ $btnText }}</button>
-<a class="btn btn-link btn-block" href=" {{ route('graduados.index') }} ">
+<a class="btn btn-link btn-block" href=" {{ route('graduados.show', $graduado) }} ">
     Cancelar
 </a>

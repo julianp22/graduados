@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class SaveNoticiaRequest extends FormRequest
 {
@@ -25,8 +27,7 @@ class SaveNoticiaRequest extends FormRequest
     {
         return [
             'titulo' => 'required',
-            'descripcion' => 'required',
-            'foto' => 'required'
+            'descripcion' => 'required'
         ];
     }
 
@@ -34,8 +35,7 @@ class SaveNoticiaRequest extends FormRequest
     {
         return [
             'titulo.required' => 'Se requiere de un titulo',
-            'descripcion.required' => 'Se requiere de una descripción',
-            'foto.required' => 'Se requiere un foto'
+            'descripcion.required' => 'Se requiere de una descripción'
         ];
     }
 }

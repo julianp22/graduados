@@ -6,79 +6,55 @@ use Illuminate\Http\Request;
 
 class ExperienciaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
-        //
+        return view('experiencias.index', [
+            'experiencias' => Experiencia::latest()->paginate()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show(Experiencia $experiencia) 
+    {
+        return view('experiencias.show', [
+            'experiencia' => $experiencia
+        ]);
+    }
+
     public function create()
     {
-        //
+        return view('experiencias.create', [
+            'experiencia' => new Experiencia
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(SaveExperienciaRequest $request)
     {
-        //
+        Experiencia::create($request->validated());
+        return redirect()->route('experiencias.index')->with('status', 'La experiencia fue agregada con éxito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Experiencia $experiencia)
     {
-        //
+        return view('experiencias.edit', [
+            'experiencia' => $experiencia
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Experiencia $experiencia, SaveExperienciaRequest $request)
     {
-        //
+        $experiencia->update($request->validated());
+
+        return redirect()->route('experiencias.show', $experiencia)->with('status', 'La experiencia fue actualizada con éxito');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Experiencia $experiencia)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $experiencia->delete();
+        return redirect()->route('experiencias.index')->with('status', 'La experiencia fue eliminada con éxito');
     }
 }

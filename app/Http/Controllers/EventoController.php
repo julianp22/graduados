@@ -2,83 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evento;
+use App\Http\Requests\SaveEventoRequest;
+use App\Http\Requests\SaveFotoRequest;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
-        //
+        return view('eventos.index', [
+            'eventos' => Evento::latest()->paginate(3)
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function show(Evento $evento) 
+    {
+        return view('eventos.show', [
+            'evento' => $evento
+        ]);
+    }
+
     public function create()
     {
-        //
+        return view('eventos.create', [
+            'evento' => new Evento
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(SaveEventoRequest $request)
     {
-        //
+        $file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
+        Evento::create([
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ] + $request->validated());
+        return redirect()->route('eventos.index')->with('status', 'El evento fue agregado con éxito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Evento $evento)
     {
-        //
+        return view('eventos.edit', [
+            'evento' => $evento
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function picView(Evento $evento)
     {
-        //
+        return view('eventos.picView', [
+            'evento' => $evento
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Evento $evento, SaveEventoRequest $request)
     {
-        //
+        $evento->update($request->validated());
+
+        return redirect()->route('eventos.show', $evento)->with('status', 'El evento fue actualizado con éxito');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function updatePic(Evento $evento, SaveFotoRequest $request)
     {
-        //
+        $file = $request->file('foto');
+        $originalname = $file->getClientOriginalName();
+
+        $evento->update([
+            'foto' => $file->storeAs('fotos', $originalname, 'public') // AGREGA FOTO
+        ]);
+
+        return redirect()->route('eventos.show', $evento)->with('status', 'La foto fue actualizada con éxito');
+    }
+
+    public function destroy(Evento $evento)
+    {
+        Storage::delete($evento->foto);
+        $evento->delete();
+        return redirect()->route('eventos.index')->with('status', 'El evento fue eliminado con éxito');
     }
 }

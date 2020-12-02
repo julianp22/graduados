@@ -12,7 +12,8 @@
                 <form class="bg-white py-3 px-4 shadow rounded" 
                     method="POST" 
                     action="{{ route('ofertas.store') }}"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data"
+                    autocomplete="off">
 
                     <h3 class="text-center">Agregar oferta</h1>
                     <hr>

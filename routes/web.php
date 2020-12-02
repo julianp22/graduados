@@ -32,4 +32,12 @@ Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofert
 Route::get('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@picView')->name('picView');
 Route::post('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@updatePic')->name('updatePic');
 
+//noticias routes
+Route::get('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@picView')->name('picView');
+Route::post('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@updatePic')->name('updatePic');
+
+//noticias routes
+Route::get('evento/{evento}/picView', 'App\Http\Controllers\EventoController@picView')->name('picView');
+Route::post('evento/{evento}/picView', 'App\Http\Controllers\EventoController@updatePic')->name('updatePic');
+
 Auth::routes();

@@ -26,6 +26,7 @@ class SaveExperienciaRequest extends FormRequest
     public function rules()
     {
         return [
+            'graduado_id' => 'required',
             'url_video' => 'required',
             'descripcion' => 'required',
         ];
@@ -34,6 +35,7 @@ class SaveExperienciaRequest extends FormRequest
     public function messages() 
     {
         return [
+            'graduado_id.required' => 'Se requiere de un graduado',
             'url_video.required' => 'Se requiere de un vídeo',
             'descripcion.required' => 'Se requiere de una descripción'
         ];

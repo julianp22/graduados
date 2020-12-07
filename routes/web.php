@@ -22,7 +22,7 @@ Route::resource('noticia', 'App\Http\Controllers\NoticiaController')->names('not
 Route::resource('graduado', 'App\Http\Controllers\GraduadoController')->names('graduados');
 Route::resource('evento', 'App\Http\Controllers\EventoController')->names('eventos');
 Route::resource('experiencia', 'App\Http\Controllers\ExperienciaController')->names('experiencias')->parameters([
-    'expriencia' => 'experiencia'
+    'experiencia' => 'experiencia'
 ]);
 Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofertas')->parameters([
     'oferta' => 'oferta'

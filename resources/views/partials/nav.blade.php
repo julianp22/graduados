@@ -66,7 +66,7 @@
                     </div>
                 </li>
             @else
-                <li id="social">
+                <li id="social" class="text-center">
                     <a href="#" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
                         <i class="fas fa-power-off white-text mr-4"></i>
@@ -74,16 +74,16 @@
                 </li>
             @endguest
             <li id="social" class="text-center">
-                <a href="https://facebook.com" target="_blank" class="fb-ic">
+                <a href="https://www.facebook.com/IngSistUFPS/?fref=ts" target="_blank" class="fb-ic">
                     <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="tw-ic">
+                <a href="https://twitter.com/UFPSCUCUTA" target="_blank" class="tw-ic">
                     <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
-                <a href="https://youtube.com" target="_blank" class="li-ic">
+                <a href="https://www.youtube.com/channel/UCgPz-qqaAk4lbHfr0XH3k2g" target="_blank" class="li-ic">
                     <i class="fab fa-youtube white-text mr-4"> </i>
                 </a>
-                <a href="https://instagram.com" target="_blank" class="ins-ic">
+                <a href="https://www.instagram.com/ufpscucuta/" target="_blank" class="ins-ic">
                     <i class="fab fa-instagram white-text"> </i>
                 </a>
             </li>

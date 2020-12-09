@@ -60,7 +60,11 @@ class ExperienciaController extends Controller
 
     public function update(Experiencia $experiencia, SaveExperienciaRequest $request)
     {
-        $experiencia->update($request->validated());
+        $url = $request->input('url_video');
+        $embed = Embed::make($url)->parseUrl();
+        $experiencia->update([
+            'url_video' => $embed->getHtml()
+        ] + $request->validated());
 
         return redirect()->route('experiencias.show', $experiencia)->with('status', 'La experiencia fue actualizada con éxito');
     }

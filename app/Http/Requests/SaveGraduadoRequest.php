@@ -30,8 +30,7 @@ class SaveGraduadoRequest extends FormRequest
             'fecha_grado' => 'required',
             'email' => 'required',
             'num_celular' => 'required',
-            'pais_residencia' => 'required',
-            'foto' => 'required|mimes:jpeg,png,bmp,tiff|max:4096'
+            'pais_residencia' => 'required'
         ];
     }
 
@@ -43,8 +42,7 @@ class SaveGraduadoRequest extends FormRequest
             'fecha_grado.required' => 'Se requiere de una fecha de grado',
             'email.required' => 'Se requiere un email',
             'num_celular.required' => 'Se requiere de un número de celular',
-            'pais_residencia.required' => 'Se debe elegir un país de residencia',
-            'foto.required' => 'Se requiere una foto'
+            'pais_residencia.required' => 'Se debe elegir un país de residencia'
         ];
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Noticia;
+use App\Models\Evento;
+use App\Models\Graduado;
+use App\Models\Experiencia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home')->name('home');
+//home view
+Route::view('/', 'home', 
+    ['primernoticia' => Noticia::latest()->first(),
+     'noticias' => Noticia::orderBy('created_at', 'desc')->get(),
+     'eventos' => Evento::orderBy('created_at', 'desc')->get(),
+     'graduados' => Graduado::orderBy('created_at', 'desc')->get(),
+     'experiencias' => Experiencia::orderBy('created_at', 'desc')->get()])
+     ->name('home');
 
 //resource routes
 Route::resource('noticia', 'App\Http\Controllers\NoticiaController')->names('noticias')->parameters([
@@ -29,15 +40,16 @@ Route::resource('oferta', 'App\Http\Controllers\OfertaController')->names('ofert
 ]);
 
 //graduados routes
-Route::get('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@picView')->name('picView');
-Route::post('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@updatePic')->name('updatePic');
+Route::get('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@picView')->name('picViewGrad');
+Route::post('graduado/{graduado}/picView', 'App\Http\Controllers\GraduadoController@updatePic')->name('updatePicGrad');
 
 //noticias routes
-Route::get('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@picView')->name('picView');
-Route::post('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@updatePic')->name('updatePic');
+Route::get('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@picView')->name('picViewNoti');
+Route::post('noticia/{noticia}/picView', 'App\Http\Controllers\NoticiaController@updatePic')->name('updatePicNoti');
 
-//noticias routes
-Route::get('evento/{evento}/picView', 'App\Http\Controllers\EventoController@picView')->name('picView');
-Route::post('evento/{evento}/picView', 'App\Http\Controllers\EventoController@updatePic')->name('updatePic');
+//eventos routes
+Route::get('evento/{evento}/picView', 'App\Http\Controllers\EventoController@picView')->name('picViewEvent');
+Route::post('evento/{evento}/picView', 'App\Http\Controllers\EventoController@updatePic')->name('updatePicEvent');
 
+//auth routes
 Auth::routes();

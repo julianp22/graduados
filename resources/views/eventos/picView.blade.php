@@ -13,7 +13,7 @@
 
         <div class="row py-4">
             <div class="col-12 col-sm-10 col-lg-6 mx-auto">
-                <form class="bg-white py-3 px-4 shadow rounded" method="POST" action="{{ route('updatePic', $evento) }}"
+                <form class="bg-white py-3 px-4 shadow rounded" method="POST" action="{{ route('updatePicEvent', $evento) }}"
                     enctype="multipart/form-data" autocomplete="off">
 
                     <h3 class="text-center">Cambiar foto</h3>

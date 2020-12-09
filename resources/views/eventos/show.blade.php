@@ -20,7 +20,7 @@
                         Eliminar
                     </a>
                     <span>
-                        <a class="btn btn-success mr-2" href='{{ route('picView', $evento) }}'>Cambiar foto</a>
+                        <a class="btn btn-success mr-2" href='{{ route('picViewEvent', $evento) }}'>Cambiar foto</a>
                         <input type="file" id="foto" accept="image/*" name="foto" value="{{ old('foto', $evento->foto) }}"
                             class="@error('foto') is-invalid @enderror" />
                     </span>
